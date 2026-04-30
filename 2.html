@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laptop List</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            width: 70%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+
+        select {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Laptop Details</h2>
+
+<select id="filter" onchange="loadData()">
+    <option value="all">All</option>
+    <option value="Intel i5">Intel i5</option>
+    <option value="Intel i7">Intel i7</option>
+    <option value="Ryzen 5">Ryzen 5</option>
+    <option value="Ryzen 7">Ryzen 7</option>
+</select>
+
+<table>
+    <thead>
+        <tr>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Processor</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+<script>
+function loadData() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "laptops.xml", true);
+
+    xhr.onload = function () {
+        let xml = xhr.responseXML;
+        let laptops = xml.getElementsByTagName("laptop");
+        let filter = document.getElementById("filter").value;
+
+        let output = "";
+
+        for (let i = 0; i < laptops.length; i++) {
+            let brand = laptops[i].getElementsByTagName("brand")[0].textContent;
+            let model = laptops[i].getElementsByTagName("model")[0].textContent;
+            let price = laptops[i].getElementsByTagName("price")[0].textContent;
+            let processor = laptops[i].getElementsByTagName("processor")[0].textContent;
+
+            if (filter === "all" || processor === filter) {
+                output += `
+                    <tr>
+                        <td>${brand}</td>
+                        <td>${model}</td>
+                        <td>${price}</td>
+                        <td>${processor}</td>
+                    </tr>
+                `;
+            }
+        }
+
+        document.getElementById("tableBody").innerHTML = output;
+    };
+
+    xhr.send();
+}
+
+// load data on page start
+window.onload = loadData;
+</script>
+
+</body>
+</html>

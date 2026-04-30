@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Billing Page</title>
+</head>
+<body>
+
+<h2>Product Billing</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+    </tr>
+
+    <tr>
+        <td>Product 1</td>
+        <td>100</td>
+        <td><input type="number" value="0" min="0" onchange="calculate()"></td>
+        <td class="subtotal">0</td>
+    </tr>
+
+    <tr>
+        <td>Product 2</td>
+        <td>200</td>
+        <td><input type="number" value="0" min="0" onchange="calculate()"></td>
+        <td class="subtotal">0</td>
+    </tr>
+
+    <tr>
+        <td>Product 3</td>
+        <td>150</td>
+        <td><input type="number" value="0" min="0" onchange="calculate()"></td>
+        <td class="subtotal">0</td>
+    </tr>
+
+    <tr>
+        <td>Product 4</td>
+        <td>50</td>
+        <td><input type="number" value="0" min="0" onchange="calculate()"></td>
+        <td class="subtotal">0</td>
+    </tr>
+
+</table>
+
+<h3>Grand Total: <span id="total">0</span></h3>
+
+<script>
+function calculate() {
+    let prices = [100, 200, 150, 50];
+    let quantities = document.querySelectorAll("input");
+    let subtotals = document.querySelectorAll(".subtotal");
+
+    let total = 0;
+
+    for (let i = 0; i < quantities.length; i++) {
+        let qty = parseInt(quantities[i].value);
+
+        // prevent negative
+        if (qty < 0) {
+            qty = 0;
+            quantities[i].value = 0;
+        }
+
+        let sub = qty * prices[i];
+        subtotals[i].innerText = sub;
+        total += sub;
+    }
+
+    document.getElementById("total").innerText = total;
+}
+</script>
+
+</body>
+</html>

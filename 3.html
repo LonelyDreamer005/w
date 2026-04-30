@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks Calculator</title>
+</head>
+<body>
+
+    <h2>Marks Calculator</h2>
+
+    <!-- Input fields -->
+    Subject 1: <input  id="m1"><br><br>
+    Subject 2: <input id="m2"><br><br>
+    Subject 3: <input  id="m3"><br><br>
+    Subject 4: <input  id="m4"><br><br>
+    Subject 5: <input  id="m5"><br><br>
+
+    <!-- Button -->
+    <button onclick="calculate()">Calculate</button>
+
+    <br><br>
+
+    <!-- Result Table -->
+    <table border="1">
+        <tr>
+            <th>Total</th>
+            <th>Average</th>
+            <th>Grade</th>
+        </tr>
+        <tr>
+            <td id="total"></td>
+            <td id="avg"></td>
+            <td id="grade"></td>
+        </tr>
+    </table>
+
+    <script>
+        function calculate() {
+            let m1 = Number(document.getElementById("m1").value);
+            let m2 = Number(document.getElementById("m2").value);
+            let m3 = Number(document.getElementById("m3").value);
+            let m4 = Number(document.getElementById("m4").value);
+            let m5 = Number(document.getElementById("m5").value);
+
+            let total = m1 + m2 + m3 + m4 + m5;
+            let avg = total / 5;
+            let grade = "";
+
+            if (avg >= 90) grade = "A";
+            else if (avg >= 75) grade = "B";
+            else if (avg >= 50) grade = "C";
+            else grade = "Fail";
+
+            document.getElementById("total").innerHTML = total;
+            document.getElementById("avg").innerHTML = avg;
+            document.getElementById("grade").innerHTML = grade;
+        }
+    </script>
+
+</body>
+</html>

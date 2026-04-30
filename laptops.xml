@@ -1,0 +1,36 @@
+<laptops>
+    <laptop>
+        <brand>Dell</brand>
+        <model>Inspiron 15</model>
+        <price>55000</price>
+        <processor>Intel i5</processor>
+    </laptop>
+
+    <laptop>
+        <brand>HP</brand>
+        <model>Pavilion</model>
+        <price>60000</price>
+        <processor>Intel i7</processor>
+    </laptop>
+
+    <laptop>
+        <brand>Lenovo</brand>
+        <model>IdeaPad</model>
+        <price>50000</price>
+        <processor>Ryzen 5</processor>
+    </laptop>
+
+    <laptop>
+        <brand>Asus</brand>
+        <model>VivoBook</model>
+        <price>52000</price>
+        <processor>Ryzen 7</processor>
+    </laptop>
+
+    <laptop>
+        <brand>Acer</brand>
+        <model>Aspire 7</model>
+        <price>58000</price>
+        <processor>Intel i5</processor>
+    </laptop>
+</laptops>
